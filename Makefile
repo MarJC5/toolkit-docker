@@ -23,6 +23,9 @@ DOCKER		=  docker compose -f ${DOCKER_DIR} --env-file ${ENV_FILE} -p ${NAME}
 all: up
 
 up:
+	@echo "${GREEN}Create hostnames...${RESET}"
+	@chmod +x ./srcs/tools/host.sh
+	@./srcs/tools/host.sh
 	@echo "${GREEN}Building containers...${RESET}"
 	@${DOCKER} up -d
 
@@ -51,6 +54,9 @@ logs:
 	@${DOCKER} logs -f
 
 rebuild: down delete
+	@echo "${GREEN}Create hostnames...${RESET}"
+	@chmod +x ./srcs/tools/host.sh
+	@./srcs/tools/host.sh
 	@echo "${GREEN}Rebuilding containers...${RESET}"
 	@${DOCKER} up -d --build --force-recreate
 

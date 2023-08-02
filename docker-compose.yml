@@ -22,10 +22,13 @@ services:
       context: ./srcs/wordpress
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"
+      - "80:8000"
     restart: always
     env_file: .env
     container_name: wordpress
+    extra_hosts:
+      - "${DOMAIN}:127.0.0.1"
+      - "www.${DOMAIN}:127.0.0.1"
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
