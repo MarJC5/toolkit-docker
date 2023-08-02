@@ -19,19 +19,11 @@ RUN apt-get update && apt-get install -y \
     expect
 
 # Install npm packages
-COPY ./themes/toolkit/package*.json .
+COPY ./themes/toolkit/package*.json ./themes/toolkit/.npmrc* ./
 
 # Copy the copy-if-exists script
 COPY ./scripts/gulp_install.expect /usr/src/app/gulp_install.expect
 RUN chmod +x /usr/src/app/gulp_install.expect
-
-# GSAP auth
-# Copy the copy-if-exists script
-COPY ./scripts/copy-if-exists.sh /usr/src/app/copy-if-exists.sh
-RUN chmod +x /usr/src/app/copy-if-exists.sh
-
-# Run the copy-if-exists script
-RUN /usr/src/app/copy-if-exists.sh ./themes/toolkit/.npmrc .
 
 RUN npm install
 
