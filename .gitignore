@@ -109,6 +109,8 @@ dist
 
 .tool-versions
 
+srcs/nodejs/themes/toolkit/
+
 # Updraft
 srcs/wordpress/updraft/*.txt
 srcs/wordpress/updraft/*.zip
