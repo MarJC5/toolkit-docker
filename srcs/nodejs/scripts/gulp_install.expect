@@ -1,0 +1,11 @@
+#!/usr/bin/expect -f
+
+set timeout -1
+
+# Set your domain here
+set domain $env(DOMAIN)
+
+spawn gulp install
+expect "Enter your domain: "
+send -- "$domain\r"
+expect eof

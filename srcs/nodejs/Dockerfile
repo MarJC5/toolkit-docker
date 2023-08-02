@@ -1,4 +1,9 @@
-FROM node:18.8.0
+ARG NODE_VERSION
+
+FROM node:${NODE_VERSION}
+
+RUN echo "deb http://archive.debian.org/debian stretch main" > /etc/apt/sources.list
+RUN echo "Acquire::Check-Valid-Until false;" > /etc/apt/apt.conf
 
 LABEL maintainer="Martin Jean-Christio <martin@jean-christio.ch>"
 
@@ -10,13 +15,23 @@ RUN apt-get update && apt-get install -y \
     curl \
     git \
     openssh-client \
-    rsync
+    rsync \
+    expect
 
 # Install npm packages
 COPY ./themes/toolkit/package*.json .
 
+# Copy the copy-if-exists script
+COPY ./scripts/gulp_install.expect /usr/src/app/gulp_install.expect
+RUN chmod +x /usr/src/app/gulp_install.expect
+
 # GSAP auth
-COPY ./themes/toolkit/.npmrc .
+# Copy the copy-if-exists script
+COPY ./scripts/copy-if-exists.sh /usr/src/app/copy-if-exists.sh
+RUN chmod +x /usr/src/app/copy-if-exists.sh
+
+# Run the copy-if-exists script
+RUN /usr/src/app/copy-if-exists.sh ./themes/toolkit/.npmrc .
 
 RUN npm install
 

@@ -25,6 +25,9 @@ then
     fi
 else
     echo -e "${GREEN}Gulp project${NC}"
-    gulp install
+    npm install -g gulp-cli
+    npm install -g gulp
+    expect /usr/src/app/gulp_install.expect
+
     npm run watch
 fi
