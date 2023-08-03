@@ -122,3 +122,4 @@ srcs/wordpress/updraft/*/
 srcs/wordpress/updraft/*.htaccess
 srcs/wordpress/updraft/*.html
 srcs/wordpress/updraft/*.config
+.DS_Store

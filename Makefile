@@ -64,6 +64,11 @@ delete:
 	@echo "${GREEN}Deleting containers...${RESET}"
 	@${DOCKER} down --volumes --remove-orphans
 
+# run production : npm run production inside container nodejs
+production:
+	@echo "${GREEN}Compiling Toolkit for production...${RESET}"
+	@${DOCKER} exec nodejs npm run production
+
 help:
 	@echo "\n\033[1mUsage: make [target]${RESET}\n"
 	@echo "\033[1mTargets:${RESET}"
