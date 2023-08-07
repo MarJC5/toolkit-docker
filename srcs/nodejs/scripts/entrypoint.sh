@@ -25,8 +25,14 @@ then
     fi
 else
     echo -e "${GREEN}Gulp project${NC}"
-    npm install -g gulp-cli
-    npm install -g gulp
+    # Install gulp if not installed
+    if [ ! -f /usr/local/bin/gulp ]
+    then
+        echo -e "${GREEN}Install gulp${NC}"
+        npm install -g gulp-cli
+        npm install -g gulp
+    fi
+    
     expect /usr/src/app/gulp_install.expect
 
     npm run watch
