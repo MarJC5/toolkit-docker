@@ -69,6 +69,13 @@ production:
 	@echo "${GREEN}Compiling Toolkit for production...${RESET}"
 	@${DOCKER} exec nodejs npm run production
 
+# git commands : make git [command] [arg] 
+git:
+	@echo "${GREEN}Running git command...${RESET}"
+	@chmod +x ./srcs/tools/git.sh
+	@./srcs/tools/git.sh $(filter-out $@,$(MAKECMDGOALS))
+	
+
 help:
 	@echo "\n\033[1mUsage: make [target]${RESET}\n"
 	@echo "\033[1mTargets:${RESET}"
@@ -80,7 +87,8 @@ help:
 	@echo "\033[1m  logs${RESET}          - Display logs"
 	@echo "\033[1m  rebuild${RESET}       - Rebuild containers"
 	@echo "\033[1m  delete${RESET}        - Delete containers"
-	@echo "\033[1m  prune${RESET}         - Prune all"
+	@echo "\033[1m  production${RESET}    - Compile Toolkit for production"
+	@echo "\033[1m  git${RESET}           - Git commands"
 	@echo "\033[1m  help${RESET}          - Display this help"
 
-.PHONY: all up build down stop start restart logs rebuild delete help
+.PHONY: all up build down stop start restart logs rebuild delete help git production
