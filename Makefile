@@ -64,6 +64,14 @@ delete:
 	@echo "${GREEN}Deleting containers...${RESET}"
 	@${DOCKER} down --volumes --remove-orphans
 
+node:
+	@echo "${GREEN}Running nodejs...${RESET}"
+	@${DOCKER} exec nodejs bash
+
+wordpress:
+	@echo "${GREEN}Running wordpress...${RESET}"
+	@${DOCKER} exec wordpress bash
+
 # run production : npm run production inside container nodejs
 production:
 	@echo "${GREEN}Compiling Toolkit for production...${RESET}"
