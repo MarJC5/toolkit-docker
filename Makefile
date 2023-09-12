@@ -77,6 +77,10 @@ production:
 	@echo "${GREEN}Compiling Toolkit for production...${RESET}"
 	@${DOCKER} exec nodejs npm run production
 
+npm:
+	@echo "${GREEN}Running npm...${RESET}"
+	@${DOCKER} exec nodejs npm $(filter-out $@,$(MAKECMDGOALS))
+
 # git commands : make git [command] [arg] 
 git:
 	@echo "${GREEN}Running git command...${RESET}"
