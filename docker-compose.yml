@@ -3,7 +3,7 @@ version: '3.9'
 services:
   db:
     image: mysql:latest
-    restart: always
+    restart: unless-stopped
     container_name: ${PROJECT_NAME}-mysql
     env_file: .env
     command: --default-authentication-plugin=mysql_native_password
@@ -23,7 +23,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "80:8000"
-    restart: always
+    restart: unless-stopped
     env_file: .env
     container_name: ${PROJECT_NAME}-wordpress
     extra_hosts:
@@ -51,7 +51,7 @@ services:
         NODE_VERSION: ${NODE_VERSION}
     env_file: .env
     container_name: ${PROJECT_NAME}-nodejs
-    restart: always
+    restart: unless-stopped
     working_dir: /app
     volumes:
       - ./srcs/nodejs/themes/toolkit/:/app
@@ -63,7 +63,7 @@ services:
 
   adminer:
     image: adminer
-    restart: always
+    restart: unless-stopped
     container_name: ${PROJECT_NAME}-adminer
     ports:
       - "8080:8080"
