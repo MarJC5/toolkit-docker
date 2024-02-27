@@ -34,6 +34,6 @@ COPY ./scripts/entrypoint.sh /usr/src/app/entrypoint.sh
 RUN chown www-data:www-data /usr/src/app/entrypoint.sh
 RUN chmod +x /usr/src/app/entrypoint.sh
 
-EXPOSE 3000
+EXPOSE 3000 5173
 
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
