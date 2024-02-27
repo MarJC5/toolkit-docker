@@ -9,7 +9,7 @@ NC='\033[0m' # No Color
 
 echo -e "${GREEN}NodeJS setup${NC}"s
 npm install
-chmod 777 -R /usr/src/app/node_modules
+chmod 777 -R /app/node_modules
 
 # Check project type webpack or gulp
 if [ "$TOOLKIT_VERSION" = "webpack" ]
