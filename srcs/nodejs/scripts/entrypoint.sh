@@ -9,6 +9,7 @@ NC='\033[0m' # No Color
 
 echo -e "${GREEN}NodeJS setup${NC}"s
 npm install
+chmod 777 -R /usr/src/app/node_modules
 
 # Check project type webpack or gulp
 if [ "$TOOLKIT_VERSION" = "webpack" ]
@@ -26,14 +27,6 @@ then
 elif [ "$TOOLKIT_VERSION" = "plugin" ]
 then
     echo -e "${GREEN}Plugin project${NC}"
-    if [ "$NODE_ENV" = "production" ]
-    then
-        echo -e "${GREEN}Production mode${NC}"
-        npm run production
-    else
-        echo -e "${GREEN}Development mode${NC}"
-        npm run watch
-    fi
 else
     echo -e "${GREEN}Gulp project${NC}"
     # Install gulp if not installed
