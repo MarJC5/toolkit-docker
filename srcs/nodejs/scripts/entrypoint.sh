@@ -27,6 +27,8 @@ then
 elif [ "$TOOLKIT_VERSION" = "plugin" ]
 then
     echo -e "${GREEN}Plugin project${NC}"
+    # Keep alive
+    tail -f /dev/null
 else
     echo -e "${GREEN}Gulp project${NC}"
     # Install gulp if not installed
