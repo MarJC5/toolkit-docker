@@ -23,6 +23,17 @@ then
         echo -e "${GREEN}Development mode${NC}"
         npm run watch
     fi
+elif [ "$TOOLKIT_VERSION" = "plugin" ]
+then
+    echo -e "${GREEN}Plugin project${NC}"
+    if [ "$NODE_ENV" = "production" ]
+    then
+        echo -e "${GREEN}Production mode${NC}"
+        npm run production
+    else
+        echo -e "${GREEN}Development mode${NC}"
+        npm run watch
+    fi
 else
     echo -e "${GREEN}Gulp project${NC}"
     # Install gulp if not installed
@@ -32,7 +43,7 @@ else
         npm install -g gulp-cli
         npm install -g gulp
     fi
-    
+
     expect /usr/src/app/gulp_install.expect
 
     npm run watch

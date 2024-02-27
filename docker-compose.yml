@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 
 services:
   db:
@@ -18,7 +18,7 @@ services:
       - toolkit
 
   wordpress:
-    build: 
+    build:
       context: ./srcs/wordpress
       dockerfile: Dockerfile
     ports:
@@ -44,7 +44,7 @@ services:
       - toolkit
 
   nodejs:
-    build: 
+    build:
       context: ./srcs/nodejs
       dockerfile: Dockerfile
       args:
@@ -58,6 +58,7 @@ services:
       - exclude_node:/app/node_modules
     ports:
       - "3000:3000"
+      - "5173:5173"
     networks:
       - toolkit
 
