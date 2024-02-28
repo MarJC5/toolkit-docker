@@ -52,6 +52,13 @@ if [ ! -f "wp-config.php" ]; then
 
     wp option set blog_public 0 --allow-root # Don't index my website
 
+    # create Php.ini
+
+    echo "upload_max_filesize = 128M" > /usr/local/etc/php/conf.d/php.ini
+    echo "post_max_size = 128M" >> /usr/local/etc/php/conf.d/php.ini
+    echo "max_execution_time = 300" >> /usr/local/etc/php/conf.d/php.ini
+
+
     echo -e "${GREEN}ACF Pro plugin installation${NC}"
     wp plugin install "https://connect.advancedcustomfields.com/v2/plugins/download?p=pro&k=$ACF_KEY" --activate --allow-root
 
