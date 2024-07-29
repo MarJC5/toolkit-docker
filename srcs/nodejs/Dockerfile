@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
     expect
 
 # Install npm packages
-COPY ./themes/${APP_NAME}/package*.json ./themes/${APP_NAME}/.npmrc* ./
+COPY ./themes/toolkit/package*.json ./themes/toolkit/.npmrc* ./
 
 # Copy the copy-if-exists script
 COPY ./scripts/gulp_install.expect /usr/src/app/gulp_install.expect
